@@ -167,6 +167,8 @@ const scoreUpdate = () => {
   const score = document.getElementById("smsg");
   let S1 = localStorage.getItem(localStorage.getItem("p_1"));
   let S2 = localStorage.getItem(localStorage.getItem("p_2"));
+  // console.log(`${initialS1}  ${S1}`);
+  // console.log(`${initialS2}  ${S2}`);
   S1 = S1 - initialS1;
   S2 = S2 - initialS2;
   score.innerHTML = `${S1} : ${S2}`;
