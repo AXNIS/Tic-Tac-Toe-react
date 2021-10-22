@@ -1,4 +1,6 @@
 import leaderBoard from "./ranking";
+import initialS1 from "./settingInitials";
+import { initialS2 } from "./settingInitials";
 
 const X_CLASS = "x";
 const CIRCLE_CLASS = "circle";
@@ -12,25 +14,16 @@ const WINNING_COMBINATIONS = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-/*const cellElements = document.querySelectorAll("[data-cell]");
-const board = document.getElementById("board");
-const winningMessageElement = document.getElementById("winningMessage");
-const restartButton = document.getElementById("restartButton");
-const winningMessageTextElement = document.querySelector(
-  "[data-winning-message-text]"
-);
-const p1_name = document.getElementById("p1msg");
-const score = document.getElementById("smsg");
-const p2_name = document.getElementById("p2msg");*/
 
-const initialS1 = localStorage.getItem(localStorage.getItem("p_1"));
-const initialS2 = localStorage.getItem(localStorage.getItem("p_2"));
+let inS1;
+let inS2;
 
 let circleTurn;
 
-//startGame();
-
-//restartButton.addEventListener("click", startGame);
+const setInitials = () => {
+  inS1 = initialS1();
+  inS2 = initialS2();
+};
 
 const startGame = () => {
   circleTurn = false;
@@ -93,8 +86,8 @@ const endGame = (draw) => {
   if (draw) {
     winningMessageTextElement.innerText = "Draw!";
   } else {
-    let d1 = localStorage.getItem("p_1");
-    let d2 = localStorage.getItem("p_2");
+    const d1 = localStorage.getItem("p_1");
+    const d2 = localStorage.getItem("p_2");
 
     if (circleTurn) {
       let s2 = localStorage.getItem(d2);
@@ -167,11 +160,31 @@ const scoreUpdate = () => {
   const score = document.getElementById("smsg");
   let S1 = localStorage.getItem(localStorage.getItem("p_1"));
   let S2 = localStorage.getItem(localStorage.getItem("p_2"));
-  // console.log(`${initialS1}  ${S1}`);
-  // console.log(`${initialS2}  ${S2}`);
-  S1 = S1 - initialS1;
-  S2 = S2 - initialS2;
+  // console.log(`${inS1}  ${S1}`);
+  // console.log(`${inS2}  ${S2}`);
+  S1 = S1 - inS1;
+  S2 = S2 - inS2;
   score.innerHTML = `${S1} : ${S2}`;
 };
 
 export default startGame;
+export { setInitials };
+
+/* DOM elements 
+
+const cellElements = document.querySelectorAll("[data-cell]");
+const board = document.getElementById("board");
+const winningMessageElement = document.getElementById("winningMessage");
+const restartButton = document.getElementById("restartButton");
+const winningMessageTextElement = document.querySelector(
+  "[data-winning-message-text]"
+);
+const p1_name = document.getElementById("p1msg");
+const score = document.getElementById("smsg");
+const p2_name = document.getElementById("p2msg");
+
+//startGame();
+
+//restartButton.addEventListener("click", startGame);
+
+*/
