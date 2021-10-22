@@ -1,6 +1,6 @@
 import React from "react";
 import Leaderboard from "./components/Leaderboard";
-import GameBody from "./components/GameArae/GameBody";
+import GameBody from "./components/GameArea/GameBody";
 function App() {
   return (
     <div className="whole">
